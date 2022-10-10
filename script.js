@@ -26,15 +26,22 @@ const passIntoCard = (data) => {
 
     //passing name into card
     const name = document.querySelector(".name")
-    const title =  `${data.name.title}`;
-    const firstName = `${data.name.first}`
-    const lastName = `${data.name.last}`
-    name.innerHTML = title + " " + firstName + " " + lastName
+    const title =  data.name.title;
+    const firstName = data.name.first;
+    const lastName = data.name.last;
+    name.innerHTML = `${title} ${firstName} ${lastName}`;
 
     //passing gender into card
 
-    const gender = document.querySelector(".gender")
-    gender.innerHTML = `${data.gender}` 
+    const gender = document.querySelector(".gender");
+    const uncapitalizedGender = `${data.gender}`
+    console.log(uncapitalizedGender)
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+    gender.innerHTML = capitalizeFirstLetter(uncapitalizedGender);
+      
+    
 
     //passing username
 
