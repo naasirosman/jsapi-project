@@ -8,7 +8,7 @@ const regenerate = document.querySelector(".regenerate")
 
 
 const profileRefresh = async () => {     
-    const API = "https://randomuser.me/api/"
+    const API = "https://randomuser.me/api/"   
     console.log("loading1")
     const response = await fetch(API);
 
