@@ -1,21 +1,25 @@
 
 
 const regenerate = document.querySelector(".regenerate")
-    regenerate.addEventListener("click", () => {
-    profileRefresh();
+    regenerate.addEventListener("click", async () => {
+    document.querySelector(".content").style.display = "none";
+    document.querySelector(".loading").style.display = "block";
+    await profileRefresh();
+    document.querySelector(".content").style.display = "block";
+    document.querySelector(".loading").style.display = "none";
 })
 
 
 
 const profileRefresh = async () => {     
     const API = "https://randomuser.me/api/"   
-    console.log("loading1")
+
     const response = await fetch(API);
 
     const resultArray = await response.json();
     const data = resultArray.results[0];
     console.log(data);
-    console.log("loading2");
+
     passIntoCard(data);
 
 }
