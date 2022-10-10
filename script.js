@@ -66,7 +66,7 @@ const passIntoCard = (data) => {
     const email = document.querySelector(".email")
     const number = document.querySelector(".number")
     email.innerText = `${data.email}`
-    number.innerText = `${data.phone}`
+    number.innerText = `TEL: ${data.phone}`
 
 
     const photo = document.querySelector(".photo")
