@@ -23,7 +23,9 @@ const profileRefresh = async () => {
     passIntoCard(data);
 
 }
-
+const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 //
 
 const passIntoCard = (data) => { 
@@ -40,12 +42,8 @@ const passIntoCard = (data) => {
     const gender = document.querySelector(".gender");
     const uncapitalizedGender = `${data.gender}`
     console.log(uncapitalizedGender)
-    function capitalizeFirstLetter(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    }
+
     gender.innerHTML = capitalizeFirstLetter(uncapitalizedGender);
-      
-    
 
     //passing username
 
@@ -53,6 +51,7 @@ const passIntoCard = (data) => {
     username.innerText = `@${data.login.username}`
 
     //passing timezone
+    
     const timezone = document.querySelector(".timezone")
     let offset = `${data.location.timezone.offset}`
     let description = `${data.location.timezone.description}`
