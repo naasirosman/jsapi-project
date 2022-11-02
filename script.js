@@ -1,24 +1,28 @@
 
 
-const regenerate = document.querySelector(".regenerate")
-    regenerate.addEventListener("click", async () => {
+const regenerate = document.querySelector(".regenerate");
+regenerate.addEventListener("click", async () => {
     document.querySelector(".content").style.display = "none";
     document.querySelector(".loading").style.display = "block";
     await profileRefresh();
     document.querySelector(".content").style.display = "block";
     document.querySelector(".loading").style.display = "none";
 })
+console.log();
+
+const API = "https://randomuser.me/api/";
 
 
+const profileRefresh = async () => {
 
-const profileRefresh = async () => {     
-    const API = "https://randomuser.me/api/"   
 
     const response = await fetch(API);
 
     const resultArray = await response.json();
     const data = resultArray.results[0];
     console.log(data);
+
+
 
     passIntoCard(data);
 
@@ -28,11 +32,11 @@ const capitalizeFirstLetter = (string) => {
 }
 //
 
-const passIntoCard = (data) => { 
+const passIntoCard = (data) => {
 
     //passing name into card
     const name = document.querySelector(".name")
-    const title =  data.name.title;
+    const title = data.name.title;
     const firstName = data.name.first;
     const lastName = data.name.last;
     name.innerHTML = `${title} ${firstName} ${lastName}`;
@@ -51,7 +55,7 @@ const passIntoCard = (data) => {
     username.innerText = `@${data.login.username}`
 
     //passing timezone
-    
+
     const timezone = document.querySelector(".timezone")
     let offset = `${data.location.timezone.offset}`
     let description = `${data.location.timezone.description}`
@@ -70,7 +74,7 @@ const passIntoCard = (data) => {
 
     const photo = document.querySelector(".photo")
 
-    photo.setAttribute('src', `${data.picture.large}` )
+    photo.setAttribute('src', `${data.picture.large}`)
 
     //passing age
 
@@ -80,4 +84,4 @@ const passIntoCard = (data) => {
     //location hyperlink
     location.setAttribute('href', `https://maps.google.com/?q=${data.location.coordinates.latitude},${data.location.coordinates.longitude}`)
 
-}
+};
